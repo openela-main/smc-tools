@@ -1,0 +1,29 @@
+--- a/smc_chk	2021-07-02 12:23:56.000000000 +0200
++++ b/smc_chk	2021-07-16 14:48:40.988000000 +0200
+@@ -108,7 +108,7 @@
+ }
+ 
+ function is_python3_available() {
+-   if ! which python3 >/dev/null; then
++   if ! which /usr/libexec/platform-python >/dev/null; then
+       echo "Error: python3 is not available";
+       signal_handler;
+    fi
+@@ -124,7 +124,7 @@
+    port6=`get_free_port $(expr $port + 1)`;
+    srv=`mktemp /tmp/echo-srv.XXXXXX`;
+    cat <<-EOF > $srv
+-#!/usr/bin/env python3
++#!/usr/libexec/platform-python
+ 
+ import argparse
+ import signal
+@@ -171,7 +171,7 @@
+    is_python3_available;
+    clt=`mktemp /tmp/echo-clt.XXXXXX`;
+    cat <<-EOF > $clt
+-#!/usr/bin/env python3
++#!/usr/libexec/platform-python
+ 
+ import argparse
+ import socket
