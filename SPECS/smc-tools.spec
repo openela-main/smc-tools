@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:           smc-tools
-Version:        1.8.2
+Version:        1.8.3
 Release:        1%{?dist}
 Summary:        Shared Memory Communication Tools
 
@@ -51,6 +51,11 @@ sockets in Linux.
 %{_libdir}/libsmc-preload.so*
 
 %changelog
+* Mon Oct 09 2023 Čestmír Kalina <ckalina@redhat.com> - 1.8.3-1
+- Resolves: RHEL-11417 Upgrade smc-tools to latest version
+- smc_stats: Fix man page name
+- Bump version.
+
 * Mon Dec 05 2022 Čestmír Kalina <ckalina@redhat.com> - 1.8.2-1
 - Resolves: #2110414 Upgrade smc-tools to latest version
 
