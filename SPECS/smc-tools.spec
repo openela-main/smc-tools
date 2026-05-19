@@ -1,5 +1,5 @@
 Name:           smc-tools
-Version:        1.8.5
+Version:        1.8.6
 Release:        1%{?dist}
 Summary:        Shared Memory Communication Tools
 
@@ -66,6 +66,10 @@ sockets in Linux.
 
 
 %changelog
+* Wed Dec 17 2025 Čestmír Kalina <ckalina@redhat.com> - 1.8.6-1
+- Update to 1.8.6
+  Resolves: RHEL-100170
+
 * Thu Jul 17 2025 Čestmír Kalina <ckalina@redhat.com> - 1.8.5-1
 - Update to 1.8.5
   Resolves: RHEL-73359
