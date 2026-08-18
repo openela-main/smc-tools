@@ -1,11 +1,9 @@
-%define debug_package %{nil}
-
 Name:           smc-tools
 Version:        1.8.3
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Shared Memory Communication Tools
 
-License:        EPL
+License:        EPL-1.0
 URL:            https://www.ibm.com/developerworks/linux/linux390/smc-tools.html
 
 Requires:       man
@@ -16,6 +14,11 @@ BuildRequires:  bash-completion
 Source0:        https://github.com/ibm-s390-linux/%{name}/archive/refs/tags/%{version}.tar.gz
 
 Patch0:         smc-tools-1.6.0-smc_chk-py3.patch
+Patch1:         1-0b965ae9b5ad.patch
+Patch2:         2-61129ccb308b.patch
+Patch3:         3-3cb6fbb2afac.patch
+Patch4:         4-108d5124b837.patch
+Patch5:         5-a60b96821be3.patch
 
 %description
 The Shared Memory Communication Tools (smc-tools) package enables usage of SMC
@@ -24,6 +27,11 @@ sockets in Linux.
 %prep
 %forgesetup
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %make_build CFLAGS="%{build_cflags} -I%{_includedir}/libnl3" LDFLAGS="%{build_ldflags}" V=1
@@ -51,6 +59,14 @@ sockets in Linux.
 %{_libdir}/libsmc-preload.so*
 
 %changelog
+* Tue Aug 04 2026 Čestmír Kalina <ckalina@redhat.com> - 1.8.3-3
+- Resolves: RHEL-224216
+- fix rpminspect license and debuginfo errors
+
+* Tue Jun 23 2026 Čestmír Kalina <ckalina@redhat.com> - 1.8.3-2
+- Resolves: RHEL-159089
+- smc-tools: smc_rnics is not listing the NetH/NetD cards inside the guest
+
 * Mon Oct 09 2023 Čestmír Kalina <ckalina@redhat.com> - 1.8.3-1
 - Resolves: RHEL-11417 Upgrade smc-tools to latest version
 - smc_stats: Fix man page name
