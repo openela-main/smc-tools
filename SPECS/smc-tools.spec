@@ -1,11 +1,13 @@
 Name:           smc-tools
 Version:        1.8.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Shared Memory Communication Tools
 
 License:        EPL-1.0
 URL:            https://github.com/ibm-s390-linux/smc-tools
 Source0:        https://github.com/ibm-s390-linux/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+
+Patch0:         1-a60b96821be3.patch
 
 BuildRequires:  make
 BuildRequires:  gcc
@@ -66,6 +68,10 @@ sockets in Linux.
 
 
 %changelog
+* Tue Jun 23 2026 Čestmír Kalina <ckalina@redhat.com> - 1.8.6-2
+- Resolves: RHEL-185465
+- smc-tools: smc_rnics is not listing the NetH/NetD cards inside the guest
+
 * Wed Dec 17 2025 Čestmír Kalina <ckalina@redhat.com> - 1.8.6-1
 - Update to 1.8.6
   Resolves: RHEL-100170
